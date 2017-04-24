@@ -1,102 +1,128 @@
 'use strict'
 
 import Vue from 'vue'
-import Input from '../../components/input.vue'
+import Input from '../../vx.vue'
 
 const DEFAULT_TYPE = 'text'
 const DEFAULT_DISABLED = false
 const DEFAULT_REQUIRED = false
-const DEFAULT_AUTOCOMPLETE = null
 
 const PROP_TYPE = 'email'
 const PROP_NAME = 'useremail'
 const PROP_VALUE = 'test@example.com'
 const PROP_PLACEHOLDER = 'your email'
+const PROP_MINLENGTH = 8
 const PROP_MAXLENGTH = 80
+const PROP_AUTOCOMPLETE = 'on'
+const PROP_DISABLED = false
+const PROP_REQUIRED = true
 
 /* global describe it expect */
 
-describe('Input', () => {
-  // Inspect the raw component options
-  it('should have a created hook', () => {
-    expect(typeof Input.created).toBe('function')
-  })
+describe('component', () => {
+  it('should have a created hook', () =>
+    expect(typeof Input.created).toBe('function'))
+})
 
-  it('should have a invalid method', () => {
-    expect(typeof Input.methods.invalid).toBe('function')
-  })
+describe('methods', () => {
+  it('should have a isEmpty method', () =>
+    expect(typeof Input.methods.isEmpty).toBe('function'))
 
-  it('should have a input method', () => {
-    expect(typeof Input.methods.input).toBe('function')
-  })
+  it('should have a invalid method', () =>
+    expect(typeof Input.methods.invalid).toBe('function'))
 
-  it('should have a keyup method', () => {
-    expect(typeof Input.methods.keyup).toBe('function')
-  })
+  it('should have a input method', () =>
+    expect(typeof Input.methods.input).toBe('function'))
 
-  it('should have a setError method', () => {
-    expect(typeof Input.methods.setError).toBe('function')
-  })
+  it('should have a keyup method', () =>
+    expect(typeof Input.methods.keyup).toBe('function'))
 
-  it('should have a clearError method', () => {
-    expect(typeof Input.methods.clearError).toBe('function')
-  })
+  it('should have a setError method', () =>
+    expect(typeof Input.methods.setError).toBe('function'))
 
-  // Evaluate the results of functions in
-  // the raw component options
-  it('should set the correct default data', () => {
-    expect(typeof Input.data).toBe('function')
-    const defaultData = Input.data()
+  it('should have a clearError method', () =>
+    expect(typeof Input.methods.clearError).toBe('function'))
+})
 
-    expect(defaultData.initialValue).toBe(null)
-    expect(defaultData.hasError).toBe(false)
-    expect(defaultData.errorMessage).toBe(null)
-  })
+describe('data', () => {
+  it('should be a function', () =>
+    expect(typeof Input.data).toBe('function'))
 
-  // Inspect the component instance on mount
-  it('mount component with default props', () => {
-    // Extend the component to get the constructor, which we can then initialize directly.
-    const Constructor = Vue.extend(Input)
-    const component = new Constructor({
-      propsData: {
-        name: PROP_NAME,
-        value: PROP_VALUE
-      }
-    }).$mount()
+  const defaultData = Input.data()
 
-    const input = () => component.$el.querySelector('input')
-    const attr = (name) => input().getAttribute(name)
+  it('should have initialValue with default value', () =>
+    expect(defaultData.initialValue).toBe(null))
 
-    expect(attr('type')).toBe(DEFAULT_TYPE)
-    expect(attr('name')).toBe(PROP_NAME)
-    expect(input().value).toBe(PROP_VALUE)
-    expect(component.disabled).toBe(DEFAULT_DISABLED)
-    expect(component.required).toBe(DEFAULT_REQUIRED)
-    expect(component.autocomplete).toBe(DEFAULT_AUTOCOMPLETE)
-  })
+  it('should have hasError with default value', () =>
+    expect(defaultData.hasError).toBe(false))
 
-  it('correctly sets props', () => {
-    const Constructor = Vue.extend(Input)
-    const component = new Constructor({
-      propsData: {
-        type: PROP_TYPE,
-        name: PROP_NAME,
-        value: PROP_VALUE,
-        placeholder: PROP_PLACEHOLDER,
-        maxlength: PROP_MAXLENGTH
-      }
-    }).$mount()
+  it('should have errorMessage with default value', () =>
+    expect(defaultData.errorMessage).toBe(null))
+})
 
-    const input = () => component.$el.querySelector('input')
-    const attr = (name) => input().getAttribute(name)
+describe('mount with default props', () => {
+  const Constructor = Vue.extend(Input)
+  const component = new Constructor().$mount()
 
-    expect(attr('type')).toBe(PROP_TYPE)
-    expect(attr('name')).toBe(PROP_NAME)
-    expect(input().value).toBe(PROP_VALUE)
-    expect(attr('placeholder')).toBe(PROP_PLACEHOLDER)
-    expect(parseInt(attr('maxlength'))).toBe(PROP_MAXLENGTH)
-    expect(component.disabled).toBe(DEFAULT_DISABLED)
-    expect(component.required).toBe(DEFAULT_REQUIRED)
-    expect(component.autocomplete).toBe(DEFAULT_AUTOCOMPLETE)
-  })
+  const input = () => component.$el.querySelector('input')
+
+  it('should have default type value', () =>
+    expect(input().type).toBe(DEFAULT_TYPE))
+
+  it('should have default disabled value', () =>
+    expect(component.disabled).toBe(DEFAULT_DISABLED))
+
+  it('should have default required value', () =>
+    expect(component.required).toBe(DEFAULT_REQUIRED))
+})
+
+describe('mount with setting props', () => {
+  const Constructor = Vue.extend(Input)
+  const component = new Constructor({
+    propsData: {
+      type: PROP_TYPE,
+      name: PROP_NAME,
+      value: PROP_VALUE,
+      placeholder: PROP_PLACEHOLDER,
+      minlength: PROP_MINLENGTH,
+      maxlength: PROP_MAXLENGTH,
+      autocomplete: PROP_AUTOCOMPLETE,
+      disabled: PROP_DISABLED,
+      required: PROP_REQUIRED
+    }
+  }).$mount()
+
+  const input = () => component.$el.querySelector('input')
+  const attr = (name) => input().getAttribute(name)
+  const bool = (name, value) => value ? name : null
+
+  it('should correctly set type prop', () =>
+    expect(attr('type')).toBe(PROP_TYPE))
+
+  it('should correctly set name prop', () =>
+    expect(attr('name')).toBe(PROP_NAME))
+
+  it('should correctly set value prop', () =>
+    expect(input().value).toBe(PROP_VALUE))
+
+  it('should not be empty', () =>
+    expect(component.isEmpty()).toBe(false))
+
+  it('should correctly set placeholder prop', () =>
+    expect(attr('placeholder')).toBe(PROP_PLACEHOLDER))
+
+  it('should correctly set minlength prop', () =>
+    expect(parseInt(attr('minlength'))).toBe(PROP_MINLENGTH))
+
+  it('should correctly set maxlength prop', () =>
+    expect(parseInt(attr('maxlength'))).toBe(PROP_MAXLENGTH))
+
+  it('should correctly set autocomplete prop', () =>
+    expect(component.autocomplete).toBe(PROP_AUTOCOMPLETE))
+
+  it('should correctly set disabled prop', () =>
+    expect(attr('disabled')).toBe(bool('disabled', PROP_DISABLED)))
+
+  it('should correctly set required prop', () =>
+    expect(attr('required')).toBe(bool('required', PROP_REQUIRED)))
 })
