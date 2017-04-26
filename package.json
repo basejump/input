@@ -1,6 +1,6 @@
 {
   "name": "@vx-components/input",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Vx Input Component",
   "main": "index.vue",
   "directories": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vx-components/vx-input-component.git"
+    "url": "git+https://github.com/vx-components/input.git"
   },
   "keywords": [
     "vx",
@@ -23,9 +23,9 @@
   "author": "Sébastien Demanou",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vx-components/vx-input-component/issues"
+    "url": "https://github.com/vx-components/input/issues"
   },
-  "homepage": "https://github.com/vx-components/vx-input-component#readme",
+  "homepage": "https://github.com/vx-components/input#readme",
   "devDependencies": {
     "@vuedoc/md": "^0.2.0",
     "babel-core": "^6.24.1",
@@ -38,6 +38,7 @@
     "babel-runtime": "^6.23.0",
     "css-loader": "^0.28.0",
     "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-html": "^2.0.1",
     "eslint-plugin-import": "^2.2.0",
