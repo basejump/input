@@ -5,7 +5,6 @@
       :id="id"
       :autocomplete="autocomplete"
       :autofocus="autofocus"
-      :cols="cols"
       :disabled="disabled" 
       :hidden="hidden"
       :name="name"
