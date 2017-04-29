@@ -11,7 +11,6 @@ npm install --save @vx-components/input
 ```
 
 ## VxInput API
-
 ### props 
 - `v-model` ***String*** (*optional*) 
 Use this directive to create two-way data bindings with the component. It automatically picks the correct way to update the element based on the input type. 
@@ -55,12 +54,15 @@ This Boolean property indicates that the user cannot modify the value of the con
 - `required` ***Boolean*** (*optional*) `default: false` 
 This property specifies that the user must fill in a value before submitting a form. 
 
-- `dataClassError` ***String*** (*optional*) `default: 'uk-form-danger'` 
+- `data-class-error` ***String*** (*optional*) `default: 'uk-form-danger'` 
 
 ### events 
 - `invalid` Fired when a submittable element has been checked and doesn't satisfy its constraints. The validity of submittable elements is checked before submitting their owner form. 
+
 - `input` Fired when the value is changed. 
+
 - `change` Fired when a change to the initial element's value is committed by the user. Unlike the `input` event, the change event is not necessarily fired for each change to an element's value. 
+
 - `keyup` Fired when a key is released. 
 
 ### methods 

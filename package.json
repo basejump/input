@@ -1,14 +1,15 @@
 {
   "name": "@vx-components/input",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Vx Input Component",
-  "main": "index.vue",
+  "main": "vx.vue",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "pretest": "eslint --ext .js,.vue components test/specs",
     "test": "karma start karma.conf.js",
+    "posttest": "make readme",
     "prepublish": "npm test"
   },
   "repository": {
@@ -27,7 +28,7 @@
   },
   "homepage": "https://github.com/vx-components/input#readme",
   "devDependencies": {
-    "@vuedoc/md": "^0.2.0",
+    "@vuedoc/md": "^0.3.3",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
@@ -45,16 +46,16 @@
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "jasmine-core": "^2.5.2",
+    "jasmine-core": "^2.6.1",
     "karma": "^1.6.0",
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-spec-reporter": "0.0.31",
     "karma-webpack": "^2.0.3",
     "phantomjs-prebuilt": "^2.1.14",
-    "vue": "^2.2.6",
-    "vue-loader": "^11.3.4",
-    "vue-style-loader": "^3.0.0",
+    "vue": "^2.3.0",
+    "vue-loader": "^12.0.2",
+    "vue-style-loader": "^3.0.1",
     "vueify": "^9.4.1",
     "webpack": "^2.4.1"
   }
