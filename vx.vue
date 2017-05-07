@@ -71,12 +71,12 @@
       /**
        * The maximum number of characters (Unicode code points) that the user can enter. If this value isn't specified, the user can enter an unlimited number of characters.
        */
-      maxlength: { type: Number, validation: (value) => value > 0 },
+      maxlength: { type: Number, validator: (value) => value > 0 },
 
       /**
        * The minimum number of characters (Unicode code points) required that the user should enter.
        */
-      minlength: { type: Number, validation: (value) => value >= 0 },
+      minlength: { type: Number, validator: (value) => value >= 0 },
 
       /**
        * The name of the control.
